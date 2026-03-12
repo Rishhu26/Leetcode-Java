@@ -1,0 +1,34 @@
+class Solution {
+public:
+    vector<int> findAnagrams(string s, string p) {
+        
+        int n = s.length();
+        int k = p.length();
+        
+        vector<int> result;
+        vector<int> pcount(26,0);
+        vector<int> scount(26,0);
+
+        if(n < k){
+          return result;
+        }
+
+        for(int i = 0; i < k; i++){
+            pcount[p[i] - 'a']++;
+            scount[s[i] - 'a']++;
+        }
+
+        if(pcount == scount)
+            result.push_back(0);
+
+        for(int i = k; i < n; i++){
+            scount[s[i] - 'a']++;       
+            scount[s[i-k] - 'a']--;     
+            
+            if(pcount == scount)
+                result.push_back(i-k+1);
+        }
+
+        return result;
+    }
+};
