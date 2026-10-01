@@ -7,10 +7,10 @@ public:
 
        while( i < n){
            if(address[i] == '.'){
-            ans += "[.]";
+            ans = ans+ "[.]";
            }
            else{
-            ans += address[i];
+            ans = ans+address[i];
            }
             i++;
        }
